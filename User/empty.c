@@ -35,48 +35,71 @@ uint8_t Task = 0;
 uint8_t start_flag = 0;
 uint8_t first_flag = 0;
 float basespeed = 0;
+uint8_t time_10ms = 0;
 
 int main(void)
 {
 	board_init(); // 延迟 串口
-	OLED_Init();
-	encoder_Init();
-	timerA_init();
-	timerG_init();
-	
+	HC05_Init();
+	timer0_init();
+	timer1_init();
+	timer2_init();
+
 	while(1) 
 	{   
-		test();
+//		test();
 		Task_select();
 	}
 }
 
-
-// pid控制
 void TIMER_0_INST_IRQHandler(void)
 {
-	if(DL_TimerA_getPendingInterrupt(TIMER_0_INST))
-	{
-		if(DL_TIMER_IIDX_ZERO) 
-		{	
-			Gray_Read();
-			PID_select();
-			Key_Tick();
-		}
-	}
+    if (DL_TimerA_getPendingInterrupt(TIMER_0_INST) == DL_TIMER_IIDX_ZERO)
+    {
+        stepX();
+    }
 }
 
 void TIMER_1_INST_IRQHandler(void)
 {
-	if(DL_TimerG_getPendingInterrupt(TIMER_1_INST))
-	{
-		if(DL_TIMER_IIDX_LOAD)
-		{	
-			if (start_flag == 1 && first_flag == 0)   capture_initial_yaw();
-			UpdateSoundLight();
-		}
-	}
+    if (DL_TimerG_getPendingInterrupt(TIMER_1_INST) == DL_TIMER_IIDX_LOAD)
+    {
+        stepY();
+    }
 }
 
 
+// pid控制
+//void TIMER_0_INST_IRQHandler(void)
+//{
+//	if(DL_TimerA_getPendingInterrupt(TIMER_0_INST))
+//	{
+//		if(DL_TIMER_IIDX_ZERO) 
+//		{	
+//			stepX();
+//		}
+//	}
+//}
+
+//void TIMER_1_INST_IRQHandler(void)
+//{
+//	if(DL_TimerG_getPendingInterrupt(TIMER_1_INST))
+//	{
+//		if(DL_TIMER_IIDX_LOAD)
+//		{	
+//			stepY();
+//		}
+//	}
+//}
+
+void TIMER_2_INST_IRQHandler(void)
+{
+	if(DL_TimerG_getPendingInterrupt(TIMER_2_INST))
+	{
+		if(DL_TIMER_IIDX_ZERO) 
+		{	
+			Key_Tick();
+		}
+	}
+}
 

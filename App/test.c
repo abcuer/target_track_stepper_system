@@ -1,5 +1,56 @@
 #include "headfile.h"
 
+/************************ 开环电机步数测试 ***************************/
+void test(void)
+{
+// 左右方向转动 +90°
+	Stepper_X_Goto_Angle(360.0f);
+	while (DL_TimerA_isRunning(TIMER_0_INST));
+
+	// 上下方向转动 +45°
+	Stepper_Y_Goto_Angle(360.0f);
+	while (DL_TimerG_isRunning(TIMER_1_INST));
+
+	// 回到原点
+	Stepper_X_Goto_Angle(0.0f);
+	while (DL_TimerA_isRunning(TIMER_0_INST));
+
+	Stepper_Y_Goto_Angle(0.0f);
+	while (DL_TimerG_isRunning(TIMER_1_INST));
+}
+
+/************************ 开环电机步数测试 ***************************/
+//void test(void)
+//{
+//	Stepper_X_Start(1, 400);     
+//	while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
+
+//	Stepper_Y_Start(1, 2170);     
+//	while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
+//	Stepper_X_Start(0, 400);    
+//	while (DL_TimerA_isRunning(TIMER_0_INST));
+//	Stepper_Y_Start(0, 2170);     
+//	while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
+//}
+
+/************************ 速度环调参 ***************************/
+//void test()
+//{
+//	speed_tar = 30;
+//	pid_flag = SPEED_PID;
+//}
+
+/************************ 速度环调参 ***************************/
+//void test()
+//{
+//	basespeed = 250;
+//	pid_flag = TRACK_MIDDLELINE;
+////	printf("%.2f, %.2f\r\n", speedA, -speedB);
+//}
+
+
+
+
 /*   串口通讯测试
 void test(void)
 {
@@ -25,12 +76,13 @@ void test(void)
 	pid_flag = SPEED_PID;
 }
 */
-void test(void)
-{
-	OLED_ShowString(0,0,(uint8_t *)"ABC",8,1);//6*8 “ABC”
-	OLED_ShowString(0,8,(uint8_t *)"ABC",12,1);//6*12 “ABC”
-	OLED_ShowString(0,20,(uint8_t *)"ABC",16,1);//8*16 “ABC”
-	OLED_ShowString(0,36,(uint8_t *)"I LOVE YOU",24,1);//12*24 “ABC”
-	OLED_Refresh();
-	delay_ms(20);
-}
+/************************ LED驱动测试 ***************************/
+//void test(void)
+//{
+//	OLED_ShowString(0,0,(uint8_t *)"ABC",8,1);//6*8 “ABC”
+//	OLED_ShowString(0,8,(uint8_t *)"ABC",12,1);//6*12 “ABC”
+//	OLED_ShowString(0,20,(uint8_t *)"ABC",16,1);//8*16 “ABC”
+//	OLED_ShowString(0,36,(uint8_t *)"I LOVE YOU",24,1);//12*24 “ABC”
+//	OLED_Refresh();
+//	delay_ms(20);
+//}

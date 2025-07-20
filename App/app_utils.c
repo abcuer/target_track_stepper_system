@@ -8,58 +8,76 @@ float angle_initial = 0;
 
 void Task_select(void)
 {
-	
 	uint8_t Key = Key_GetNum();
 		
 	// 切换任务
-	if(start_flag == 0)
+	if (Key == 1) 
 	{
-		if (Key == 1) 
-		{
-			LED_Green_ON();
-			Task++;
-		}
-		if (Task > 4) Task = 0; 
+		LED_Green_ON();
+		LED_Blue_OFF();
+		start_flag++;
+		start_flag%=2;
 	}
 	if(Key == 2)
 	{
+		LED_Green_OFF();
 		LED_Blue_ON();
-		start_flag = 1;
+		Task++;
+		Task%=3;
 	}
-
-	// 执行任务
-	if(start_flag == 1)
+	if(Key == 3)
 	{
-		if(first_flag == 1)
+	
+	}
+	if(start_flag)
+	{
+		if(Task == 0)
 		{
-			switch(Task)
-			{
-				case 1: Task_1(); break;
-				case 2: Task_2(); break;
-				case 3: Task_3(); break;
-				case 4: Task_4(); break;
-			}
+			Stepper_X_Start(1, 300);    
+			while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
+
+			Stepper_X_Start(0, 300);     
+			while (DL_TimerA_isRunning(TIMER_0_INST));
+		}
+		else if(Task == 1)
+		{
+			Stepper_Y_Start(1, 600);     
+			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
+
+			Stepper_Y_Start(0, 600);     
+			while (DL_TimerG_isRunning(TIMER_1_INST));
+		}
+		else if(Task == 2)
+		{
+			Stepper_X_Start(1, 300);     
+			while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
+			Stepper_Y_Start(1, 600);     
+			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
+
+			Stepper_X_Start(0, 300);    
+			while (DL_TimerA_isRunning(TIMER_0_INST));
+			Stepper_Y_Start(0, 600);     
+			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
 		}
 	}
+	
+
+	// 执行任务
+//	if(start_flag == 1)
+//	{
+//		if(first_flag == 1)
+//		{
+//			switch(Task)
+//			{
+//				case 1: Task_1(); break;
+//				case 2: Task_2(); break;
+//				case 3: Task_3(); break;
+//				case 4: Task_4(); break;
+//			}
+//		}
+//	}
 }
 
-
-void capture_initial_yaw(void) 
-{
-		LED_Blue_ON();
-		delay_ms(50);
-		LED_Blue_OFF();
-		LED_Green_ON();
-		float ang1 = Yaw;
-		delay_ms(50);
-		float ang2 = Yaw;
-		delay_ms(50);
-		float ang3 = Yaw;
-		angle_initial = (ang1 + ang2 + ang3) / 3;
-		first_flag = 1;
-		LED_Green_OFF();
-		delay_ms(50);
-}
  
 void SoundLight(void)
 {
@@ -93,18 +111,4 @@ extern uint8_t turn_flag;
 
 void params_clear(void)
 {
-	Task = 0; 
-	lap_count = 0;
-	carL_dis = 0;
-	carR_dis = 0;
-	Get_Encoder_countA = 0;
-	Get_Encoder_countB = 0;
-	baisetime = 0;
-	turn_time = 0;
-	turn_flag = 0;
-	first_flag = 0;
-	start_flag = 0;
-	Line_flag = 0;
-	basespeed = 0;
-	workstep = 0;
 }

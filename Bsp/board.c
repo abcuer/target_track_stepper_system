@@ -12,15 +12,13 @@
 #include "board.h"
 #include "headfile.h"
 
-#define RE_0_BUFF_LEN_MAX 128
+//#define RE_0_BUFF_LEN_MAX 128
 
-volatile uint8_t recv0_buff[RE_0_BUFF_LEN_MAX] = {0};
+//volatile uint8_t recv0_buff[RE_0_BUFF_LEN_MAX] = {0};
 
 void board_init(void)
 {
     SYSCFG_DL_init();
-	HC05_Init();
-	jy901s_Init();
 }
 
 void delay_us(unsigned long __us)

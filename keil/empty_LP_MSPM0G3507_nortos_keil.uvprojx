@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>__MSPM0G3507__</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\source\third_party\CMSIS\Core\Include;..\..\source;..\..\2024H_TI_CAR;..\App;..\Bsp;..\Control;..\Hardware;..\User</IncludePath>
+              <IncludePath>..\..\source\third_party\CMSIS\Core\Include;..\..\source;..\..\Stepper_Motor;..\App;..\Bsp;..\Control;..\User;..\Hardware</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -404,6 +404,16 @@
               <FileType>5</FileType>
               <FilePath>..\Bsp\timer.h</FilePath>
             </File>
+            <File>
+              <FileName>PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\PWM.c</FilePath>
+            </File>
+            <File>
+              <FileName>PWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Bsp\PWM.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -455,54 +465,14 @@
               <FilePath>..\Hardware\oledfont.h</FilePath>
             </File>
             <File>
-              <FileName>motor.c</FileName>
+              <FileName>stepper_motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hardware\motor.c</FilePath>
+              <FilePath>..\Hardware\stepper_motor.c</FilePath>
             </File>
             <File>
-              <FileName>motor.h</FileName>
+              <FileName>stepper_motor.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Hardware\motor.h</FilePath>
-            </File>
-            <File>
-              <FileName>encoder.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\encoder.c</FilePath>
-            </File>
-            <File>
-              <FileName>encoder.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\encoder.h</FilePath>
-            </File>
-            <File>
-              <FileName>gray.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\gray.c</FilePath>
-            </File>
-            <File>
-              <FileName>gray.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\gray.h</FilePath>
-            </File>
-            <File>
-              <FileName>jy901s.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\jy901s.c</FilePath>
-            </File>
-            <File>
-              <FileName>jy901s.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\jy901s.h</FilePath>
-            </File>
-            <File>
-              <FileName>sr04.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\sr04.c</FilePath>
-            </File>
-            <File>
-              <FileName>sr04.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\sr04.h</FilePath>
+              <FilePath>..\Hardware\stepper_motor.h</FilePath>
             </File>
             <File>
               <FileName>hc05.c</FileName>
@@ -528,46 +498,6 @@
               <FileName>pid.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Control\pid.h</FilePath>
-            </File>
-            <File>
-              <FileName>speed.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Control\speed.c</FilePath>
-            </File>
-            <File>
-              <FileName>speed.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Control\speed.h</FilePath>
-            </File>
-            <File>
-              <FileName>angle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Control\angle.c</FilePath>
-            </File>
-            <File>
-              <FileName>angle.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Control\angle.h</FilePath>
-            </File>
-            <File>
-              <FileName>gray_track.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Control\gray_track.c</FilePath>
-            </File>
-            <File>
-              <FileName>gray_track.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Control\gray_track.h</FilePath>
-            </File>
-            <File>
-              <FileName>distance.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Control\distance.c</FilePath>
-            </File>
-            <File>
-              <FileName>distance.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Control\distance.h</FilePath>
             </File>
           </Files>
         </Group>

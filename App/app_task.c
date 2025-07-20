@@ -8,6 +8,8 @@ uint8_t workstep = 0;
 int16_t turn_time = 0;
 uint8_t turn_flag = 0;
 uint8_t lap_count = 0;
+uint8_t Line_flag = 0;
+uint8_t baisetime = 0;
 
 void Task_1(void)
 {
@@ -15,7 +17,7 @@ void Task_1(void)
 	{
 		case 0: 
 			SoundLight();
-			
+			//test();
 			workstep++;
 			break;
 		
@@ -80,16 +82,7 @@ void Task_3(void)
 				turn_time++;
 				if(turn_time > TURNTIME)
 				{	
-					baisetime = 0;
-					turn_time = 0;
-					turn_flag = 0;
 				}
-			}
-			clear_distance1();
-			// 在未达到设定距离前执行
-			while((fabsf(carL_dis) <= DISTACNE1) && (fabsf(carR_dis) <= DISTACNE1)) 
-			{
-				get_distance1();
 			}
 			workstep++;
 			break;
@@ -98,7 +91,6 @@ void Task_3(void)
 			SoundLight();
 			while(Line_flag)
 			{
-				Get_Light_TTL();
 			}
 			workstep ++;
 			break;
@@ -118,14 +110,8 @@ void Task_3(void)
 				}
 			}
 			basespeed = 480;
-			clear_distance1();
-			while((fabsf(carL_dis) <= DISTACNE2) && (fabsf(carR_dis) <= DISTACNE2))
-			{
-				get_distance1();
-			}
 			while(Line_flag == 0)
 			{
-				Get_Light_TTL();
 			}
 			workstep++;
 			break;
@@ -135,7 +121,6 @@ void Task_3(void)
 			basespeed = 390;
 			while(Line_flag)
 			{
-				Get_Light_TTL();
 
 			}
 			workstep++;
@@ -143,7 +128,6 @@ void Task_3(void)
 			
 		case 5:  
 			SoundLight(); 
-			motor_stop();
 			params_clear();
 			break;	
 	}
@@ -174,27 +158,16 @@ void Task_4(void)
 					turn_flag = 0;
 				}
 			}
-			basespeed = 480;
-			clear_distance1();
-			while((fabsf(carL_dis) <= DISTACNE1) && (fabsf(carR_dis) <= DISTACNE1))
-			{
-				get_distance1();
-			}
 			while(Line_flag == 0)
 			{
-				Get_Light_TTL();
 			}
 			workstep++;
 			break;
 			
 		case 2:  
 			SoundLight();
-	
-			basespeed = 390;
-			pid_Init(&trackLine, POSITION_PID, 4.8, 0, 0);
 			while(Line_flag)
 			{
-				Get_Light_TTL();
 			}
 			workstep ++;
 			break;
@@ -213,12 +186,6 @@ void Task_4(void)
 					turn_flag = 0;
 				}
 			}
-			basespeed = 480;
-			clear_distance1();
-			while((fabsf(carL_dis) <= DISTACNE2) && (fabsf(carR_dis) <= DISTACNE2))
-			{
-				get_distance1();
-			}
 			while(Line_flag == 0)
 			{
 
@@ -228,8 +195,6 @@ void Task_4(void)
 		
 		case 4:  
 			SoundLight();
-			basespeed = 390;
-			pid_Init(&trackLine, POSITION_PID, 4.7, 0, 0);
 			while(Line_flag)
 			{
 
@@ -258,7 +223,6 @@ void Task_4(void)
 			} 
 			else if(lap_count >= 4)
 			{
-				motor_stop();
 				params_clear();
 			}
 			break;	
