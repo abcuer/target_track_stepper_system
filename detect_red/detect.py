@@ -3,13 +3,9 @@ import numpy as np
 
 def detect_red_center(frame):
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    lower_red1 = np.array([0, 100, 100])
-    upper_red1 = np.array([10, 255, 255])
-    lower_red2 = np.array([160, 100, 100])
-    upper_red2 = np.array([180, 255, 255])
-    mask1 = cv2.inRange(hsv, lower_red1, upper_red1)
-    mask2 = cv2.inRange(hsv, lower_red2, upper_red2)
-    mask = cv2.bitwise_or(mask1, mask2)
+    lower_red = np.array([158, 147, 161])
+    upper_red = np.array([179, 255, 255])
+    mask = cv2.inRange(hsv, lower_red, upper_red)
 
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if contours:
@@ -18,6 +14,6 @@ def detect_red_center(frame):
         if M["m00"] > 0:
             cx = int(M["m10"] / M["m00"])
             cy = int(M["m01"] / M["m00"])
-            return (cx, cy)
-    return None
-
+            x, y, w, h = cv2.boundingRect(c)
+            return (cx, cy), (x, y, w, h)
+    return None, None
