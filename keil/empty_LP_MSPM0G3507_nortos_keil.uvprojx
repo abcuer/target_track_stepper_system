@@ -405,14 +405,14 @@
               <FilePath>..\Bsp\timer.h</FilePath>
             </File>
             <File>
-              <FileName>PWM.c</FileName>
+              <FileName>uart0.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Bsp\PWM.c</FilePath>
+              <FilePath>..\Bsp\uart0.c</FilePath>
             </File>
             <File>
-              <FileName>PWM.h</FileName>
+              <FileName>uart0.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Bsp\PWM.h</FilePath>
+              <FilePath>..\Bsp\uart0.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -465,24 +465,14 @@
               <FilePath>..\Hardware\oledfont.h</FilePath>
             </File>
             <File>
-              <FileName>stepper_motor.c</FileName>
+              <FileName>Stepper.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hardware\stepper_motor.c</FilePath>
+              <FilePath>..\Hardware\Stepper.c</FilePath>
             </File>
             <File>
-              <FileName>stepper_motor.h</FileName>
+              <FileName>Stepper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Hardware\stepper_motor.h</FilePath>
-            </File>
-            <File>
-              <FileName>hc05.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\hc05.c</FilePath>
-            </File>
-            <File>
-              <FileName>hc05.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\hc05.h</FilePath>
+              <FilePath>..\Hardware\Stepper.h</FilePath>
             </File>
           </Files>
         </Group>

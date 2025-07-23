@@ -29,39 +29,7 @@ void Task_select(void)
 	{
 	
 	}
-	if(start_flag)
-	{
-		if(Task == 0)
-		{
-			Stepper_X_Start(1, 300);    
-			while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
-
-			Stepper_X_Start(0, 300);     
-			while (DL_TimerA_isRunning(TIMER_0_INST));
-		}
-		else if(Task == 1)
-		{
-			Stepper_Y_Start(1, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
-
-			Stepper_Y_Start(0, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));
-		}
-		else if(Task == 2)
-		{
-			Stepper_X_Start(1, 300);     
-			while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
-			Stepper_Y_Start(1, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
-
-			Stepper_X_Start(0, 300);    
-			while (DL_TimerA_isRunning(TIMER_0_INST));
-			Stepper_Y_Start(0, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
-		}
-	}
 	
-
 	// 执行任务
 //	if(start_flag == 1)
 //	{

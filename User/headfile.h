@@ -13,13 +13,13 @@
 /******************* BSP **********************/
 #include "board.h"
 #include "timer.h"
+#include "uart0.h"
 /***************** Hardware *******************/
 #include "key.h"
 #include "led.h"
 #include "buzzer.h"
 #include "oled.h"
-#include "stepper_motor.h"
-#include "hc05.h"
+#include "Stepper.h"
 /***************** Control *******************/
 #include "pid.h"
 /***************** App ***********************/

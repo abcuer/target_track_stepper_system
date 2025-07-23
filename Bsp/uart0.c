@@ -1,10 +1,37 @@
 #include "headfile.h"
-uint8_t hc05_data = 0, hc05_flag = 0;
 
-void HC05_Init(void)
+void uart0_Init(void)
 {
 	NVIC_ClearPendingIRQ(UART_0_INST_INT_IRQN);
 	NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
+}
+
+void uart0_send_char(char ch)
+{
+    while (DL_UART_isBusy(UART_0_INST) == true);
+    DL_UART_Main_transmitData(UART_0_INST, ch);
+}
+
+void uart0_send_string(char *str)
+{
+
+    while (*str != 0 && str != 0)
+    {
+        uart0_send_char(*str++);
+    }
+}
+
+void uart0_SendByte(uint8_t data)
+{
+    while (DL_UART_isBusy(UART_0_INST) == true);
+    DL_UART_Main_transmitData(UART_0_INST, data);
+}
+
+void uart0_SendCmd(uint8_t *cmd, uint8_t len)
+{
+    for (uint8_t i = 0; i < len; i++) {
+        uart0_SendByte(cmd[i]);
+    }
 }
 
 #define HEADER1 0xAA
@@ -37,9 +64,6 @@ void process_cmd(uint8_t cmd, uint8_t *data, uint8_t len)
         case 0x01:  // 启动指令示例
             // 执行启动动作
 			LED_Blue_ON();
-			Stepper_X_Goto_Angle(data[0]);
-			Stepper_Y_Goto_Angle(data[1]);
-            LED_Blue_OFF();
             break;
 
         case 0x02:  // 停止指令示例
