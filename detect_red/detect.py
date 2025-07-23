@@ -17,3 +17,10 @@ def detect_red_center(frame):
             x, y, w, h = cv2.boundingRect(c)
             return (cx, cy), (x, y, w, h)
     return None, None
+
+def normalize_angle(angle):
+    if angle > 180:
+        angle -= 360
+    elif angle < -180:
+        angle += 360
+    return angle
