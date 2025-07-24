@@ -1,2 +1,1 @@
-# Target_Track-Stepper_Motor
-基于二自由度步进电机云台的目标追踪系统
+
