@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>__MSPM0G3507__</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\source\third_party\CMSIS\Core\Include;..\..\source;..\..\Stepper_Motor;..\App;..\Bsp;..\Control;..\User;..\Hardware</IncludePath>
+              <IncludePath>..\..\source\third_party\CMSIS\Core\Include;..\..\source;..\..\Target_Track-Stepper_Motor;..\App;..\Bsp;..\Control;..\User;..\Hardware</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
