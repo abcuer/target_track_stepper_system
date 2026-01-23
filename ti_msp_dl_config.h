@@ -192,24 +192,24 @@ extern "C" {
 /* Defines for SDA: GPIOA.25 with pinCMx 55 on package pin 26 */
 #define OLED_SDA_PIN                                            (DL_GPIO_PIN_25)
 #define OLED_SDA_IOMUX                                           (IOMUX_PINCM55)
-/* Port definition for Pin Group Stepper_Motor_X */
-#define Stepper_Motor_X_PORT                                             (GPIOA)
+/* Port definition for Pin Group StepX */
+#define StepX_PORT                                                       (GPIOA)
 
-/* Defines for Step_X: GPIOA.13 with pinCMx 35 on package pin 6 */
-#define Stepper_Motor_X_Step_X_PIN                              (DL_GPIO_PIN_13)
-#define Stepper_Motor_X_Step_X_IOMUX                             (IOMUX_PINCM35)
-/* Defines for Dir_X: GPIOA.12 with pinCMx 34 on package pin 5 */
-#define Stepper_Motor_X_Dir_X_PIN                               (DL_GPIO_PIN_12)
-#define Stepper_Motor_X_Dir_X_IOMUX                              (IOMUX_PINCM34)
-/* Port definition for Pin Group Stepper_Motor_Y */
-#define Stepper_Motor_Y_PORT                                             (GPIOA)
+/* Defines for MotorX: GPIOA.13 with pinCMx 35 on package pin 6 */
+#define StepX_MotorX_PIN                                        (DL_GPIO_PIN_13)
+#define StepX_MotorX_IOMUX                                       (IOMUX_PINCM35)
+/* Defines for DirX: GPIOA.12 with pinCMx 34 on package pin 5 */
+#define StepX_DirX_PIN                                          (DL_GPIO_PIN_12)
+#define StepX_DirX_IOMUX                                         (IOMUX_PINCM34)
+/* Port definition for Pin Group StepY */
+#define StepY_PORT                                                       (GPIOB)
 
-/* Defines for Step_Y: GPIOA.15 with pinCMx 37 on package pin 8 */
-#define Stepper_Motor_Y_Step_Y_PIN                              (DL_GPIO_PIN_15)
-#define Stepper_Motor_Y_Step_Y_IOMUX                             (IOMUX_PINCM37)
-/* Defines for Dir_Y: GPIOA.14 with pinCMx 36 on package pin 7 */
-#define Stepper_Motor_Y_Dir_Y_PIN                               (DL_GPIO_PIN_14)
-#define Stepper_Motor_Y_Dir_Y_IOMUX                              (IOMUX_PINCM36)
+/* Defines for MotorY: GPIOB.13 with pinCMx 30 on package pin 1 */
+#define StepY_MotorY_PIN                                        (DL_GPIO_PIN_13)
+#define StepY_MotorY_IOMUX                                       (IOMUX_PINCM30)
+/* Defines for DirY: GPIOB.14 with pinCMx 31 on package pin 2 */
+#define StepY_DirY_PIN                                          (DL_GPIO_PIN_14)
+#define StepY_DirY_IOMUX                                         (IOMUX_PINCM31)
 
 
 

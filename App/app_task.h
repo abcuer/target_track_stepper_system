@@ -1,6 +1,9 @@
 #ifndef _task_h_
 #define _task_h_
 
+#define TURNTIME 11900
+#define DISTACNE1 100
+#define DISTACNE2 100
 
 void Task_1(void);
 void Task_2(void);

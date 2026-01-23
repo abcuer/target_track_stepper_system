@@ -1,58 +1,29 @@
-#include "headfile.h"
-uint8_t hc05_data = 0, hc05_flag = 0;
-
-void HC05_Init(void)
-{
-	NVIC_ClearPendingIRQ(UART_0_INST_INT_IRQN);
-	NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
-}
-
-#define HEADER1 0xAA
-#define HEADER2 0x55
-#define TAIL1   0x0D
-#define TAIL2   0x0A
-#define MAX_FRAME_LEN 256
-
-/*  AA 55 01 00 01 0D 0A  */
-typedef enum {
-    WAIT_HEADER1,
-    WAIT_HEADER2,
-    WAIT_CMD, // 任务号
-    WAIT_LEN,
-    WAIT_DATA,
-    WAIT_CHECKSUM,
-    WAIT_TAIL1,
-    WAIT_TAIL2
-} RxState_t;
+#include "usart.h"
+#include "board.h"
+#include "led.h"
+#include "motor.h"
 
 volatile RxState_t rx_state = WAIT_HEADER1;
 volatile uint8_t rx_buf[MAX_FRAME_LEN];
 volatile uint8_t rx_index = 0;
 volatile uint8_t data_len = 0;
 
-void process_cmd(uint8_t cmd, uint8_t *data, uint8_t len)
+void UsartDeviceInit(void)
+{
+	NVIC_ClearPendingIRQ(UART_0_INST_INT_IRQN);
+	NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
+}
+
+static void UartCmd(uint8_t cmd, uint8_t *data, uint8_t len)
 {
     switch(cmd)
     {
         case 0x01:  // 启动指令示例
             // 执行启动动作
 			LED_Blue_ON();
-			Stepper_X_Goto_Angle(data[0]);
-			Stepper_Y_Goto_Angle(data[1]);
+			StepXSetAngle(data[0]);
+			StepYSetAngle(data[1]);
             LED_Blue_OFF();
-            break;
-
-        case 0x02:  // 停止指令示例
-            LED_Blue_OFF();
-            break;
-
-        case 0x03:  // 设置速度，data[0]为速度值
-            break;
-
-        // 其他命令处理...
-
-        default:
-            // 未知命令
             break;
     }
 }
@@ -116,10 +87,9 @@ void UART_0_INST_IRQHandler(void)
             case WAIT_TAIL2:
                 if(byte == TAIL2)
                 {
-                    // 完整帧接收成功，调用命令处理
-                    process_cmd(rx_buf[0], (uint8_t *)&rx_buf[1], data_len);
+                    UartCmd(rx_buf[0], (uint8_t *)&rx_buf[1], data_len);
                 }
-                rx_state = WAIT_HEADER1; // 准备下一帧
+                rx_state = WAIT_HEADER1; 
                 break;
 
             default:

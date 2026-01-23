@@ -160,20 +160,18 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalOutput(OLED_SDA_IOMUX);
 
-    DL_GPIO_initDigitalOutput(Stepper_Motor_X_Step_X_IOMUX);
+    DL_GPIO_initDigitalOutput(StepX_MotorX_IOMUX);
 
-    DL_GPIO_initDigitalOutput(Stepper_Motor_X_Dir_X_IOMUX);
+    DL_GPIO_initDigitalOutput(StepX_DirX_IOMUX);
 
-    DL_GPIO_initDigitalOutput(Stepper_Motor_Y_Step_Y_IOMUX);
+    DL_GPIO_initDigitalOutput(StepY_MotorY_IOMUX);
 
-    DL_GPIO_initDigitalOutput(Stepper_Motor_Y_Dir_Y_IOMUX);
+    DL_GPIO_initDigitalOutput(StepY_DirY_IOMUX);
 
     DL_GPIO_clearPins(GPIOA, LED_Blue_PIN |
 		LED_Green_PIN |
-		Stepper_Motor_X_Step_X_PIN |
-		Stepper_Motor_X_Dir_X_PIN |
-		Stepper_Motor_Y_Step_Y_PIN |
-		Stepper_Motor_Y_Dir_Y_PIN);
+		StepX_MotorX_PIN |
+		StepX_DirX_PIN);
     DL_GPIO_setPins(GPIOA, BUZZER_Buzzer_PIN |
 		OLED_SCL_PIN |
 		OLED_SDA_PIN);
@@ -182,12 +180,14 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		LED_Green_PIN |
 		OLED_SCL_PIN |
 		OLED_SDA_PIN |
-		Stepper_Motor_X_Step_X_PIN |
-		Stepper_Motor_X_Dir_X_PIN |
-		Stepper_Motor_Y_Step_Y_PIN |
-		Stepper_Motor_Y_Dir_Y_PIN);
+		StepX_MotorX_PIN |
+		StepX_DirX_PIN);
     DL_GPIO_setLowerPinsInputFilter(GPIOA, DL_GPIO_PIN_2_INPUT_FILTER_8_CYCLES);
     DL_GPIO_setUpperPinsInputFilter(GPIOA, DL_GPIO_PIN_31_INPUT_FILTER_8_CYCLES);
+    DL_GPIO_clearPins(GPIOB, StepY_MotorY_PIN |
+		StepY_DirY_PIN);
+    DL_GPIO_enableOutput(GPIOB, StepY_MotorY_PIN |
+		StepY_DirY_PIN);
 
 }
 

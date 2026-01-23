@@ -1,114 +1,40 @@
 #include "headfile.h"
 
-uint8_t SoundLight_flag = 0;
-uint16_t SoundLight_time = 0;
-extern uint8_t lap_count;
+uint8_t task, start_flag;
 
-float angle_initial = 0;
-
-void Task_select(void)
+void TaskSelect(void)
 {
-	uint8_t Key = Key_GetNum();
+	uint8_t key = Key_GetNum();
 		
 	// 切换任务
-	if (Key == 1) 
+	switch(key)
 	{
-		LED_Green_ON();
-		LED_Blue_OFF();
-		start_flag++;
-		start_flag%=2;
+		case 1:
+			start_flag++;
+			start_flag%=2;
+			break;
+		case 2:
+			task++;
+			task%=3;
+			break;
+		case 3:
+			break;
 	}
-	if(Key == 2)
-	{
-		LED_Green_OFF();
-		LED_Blue_ON();
-		Task++;
-		Task%=3;
-	}
-	if(Key == 3)
-	{
-	
-	}
+
 	if(start_flag)
 	{
-		if(Task == 0)
+		switch(task)
 		{
-			Stepper_X_Start(1, 300);    
-			while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
-
-			Stepper_X_Start(0, 300);     
-			while (DL_TimerA_isRunning(TIMER_0_INST));
-		}
-		else if(Task == 1)
-		{
-			Stepper_Y_Start(1, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
-
-			Stepper_Y_Start(0, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));
-		}
-		else if(Task == 2)
-		{
-			Stepper_X_Start(1, 300);     
-			while (DL_TimerA_isRunning(TIMER_0_INST));  // 等待完成
-			Stepper_Y_Start(1, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
-
-			Stepper_X_Start(0, 300);    
-			while (DL_TimerA_isRunning(TIMER_0_INST));
-			Stepper_Y_Start(0, 600);     
-			while (DL_TimerG_isRunning(TIMER_1_INST));  // 等待完成
+			case 0:
+				
+				break;
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
 		}
 	}
-	
-
-	// 执行任务
-//	if(start_flag == 1)
-//	{
-//		if(first_flag == 1)
-//		{
-//			switch(Task)
-//			{
-//				case 1: Task_1(); break;
-//				case 2: Task_2(); break;
-//				case 3: Task_3(); break;
-//				case 4: Task_4(); break;
-//			}
-//		}
-//	}
 }
 
- 
-void SoundLight(void)
-{
-	if(SoundLight_flag == 0)
-	{
-		Buzzer_ON();
-		LED_Blue_ON();
-		SoundLight_flag = 1;
-	}
-}
-
-void UpdateSoundLight(void)
-{
-    if(SoundLight_flag)
-    {
-        SoundLight_time++;
-
-		if(SoundLight_time >= 12) 
-		{
-			Buzzer_OFF();
-			LED_Blue_OFF();
-			SoundLight_time = 0;
-			SoundLight_flag = 0; 
-		}
-        
-    }
-}
-
-extern int16_t turn_time;
-extern uint8_t turn_flag;
-
-void params_clear(void)
-{
-}

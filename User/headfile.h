@@ -18,26 +18,13 @@
 #include "led.h"
 #include "buzzer.h"
 #include "oled.h"
-#include "stepper_motor.h"
-#include "hc05.h"
+#include "motor.h"
+#include "usart.h"
 /***************** Control *******************/
 #include "pid.h"
 /***************** App ***********************/
 #include "app_utils.h"
 #include "app_task.h"
 #include "test.h"
-
-
-extern uint8_t motor_left_dir;
-extern uint8_t motor_right_dir;
-extern float speedA;
-extern float speedB;
-
-extern float basespeed;
-extern uint8_t Task;
-extern uint8_t first_flag;
-extern uint8_t start_flag;
-extern float angle_initial;
-extern uint8_t workstep;
 
 #endif

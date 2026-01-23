@@ -89,17 +89,15 @@ GPIO5.associatedPins[0].direction   = "INPUT";
 GPIO5.associatedPins[0].pin.$assign = "PB9";
 
 GPIO6.port                    = "PORTA";
-GPIO6.$name                   = "Stepper_Motor_X";
+GPIO6.$name                   = "StepX";
 GPIO6.associatedPins.create(2);
-GPIO6.associatedPins[0].$name = "Step_X";
-GPIO6.associatedPins[1].$name = "Dir_X";
+GPIO6.associatedPins[0].$name = "MotorX";
+GPIO6.associatedPins[1].$name = "DirX";
 
-GPIO7.$name                         = "Stepper_Motor_Y";
+GPIO7.$name                   = "StepY";
 GPIO7.associatedPins.create(2);
-GPIO7.associatedPins[0].$name       = "Step_Y";
-GPIO7.associatedPins[0].pin.$assign = "PA15";
-GPIO7.associatedPins[1].$name       = "Dir_Y";
-GPIO7.associatedPins[1].pin.$assign = "PA14";
+GPIO7.associatedPins[0].$name = "MotorY";
+GPIO7.associatedPins[1].$name = "DirY";
 
 PWM1.$name                              = "PWM";
 PWM1.clockDivider                       = 8;
@@ -205,3 +203,5 @@ Board.peripheral.swdioPin.$suggestSolution   = "PA19";
 GPIO4.associatedPins[0].pin.$suggestSolution = "PA24";
 GPIO6.associatedPins[0].pin.$suggestSolution = "PA13";
 GPIO6.associatedPins[1].pin.$suggestSolution = "PA12";
+GPIO7.associatedPins[0].pin.$suggestSolution = "PB13";
+GPIO7.associatedPins[1].pin.$suggestSolution = "PB14";

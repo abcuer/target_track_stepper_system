@@ -465,24 +465,24 @@
               <FilePath>..\Hardware\oledfont.h</FilePath>
             </File>
             <File>
-              <FileName>stepper_motor.c</FileName>
+              <FileName>motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hardware\stepper_motor.c</FilePath>
+              <FilePath>..\Hardware\motor.c</FilePath>
             </File>
             <File>
-              <FileName>stepper_motor.h</FileName>
+              <FileName>motor.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Hardware\stepper_motor.h</FilePath>
+              <FilePath>..\Hardware\motor.h</FilePath>
             </File>
             <File>
-              <FileName>hc05.c</FileName>
+              <FileName>usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Hardware\hc05.c</FilePath>
+              <FilePath>..\Hardware\usart.c</FilePath>
             </File>
             <File>
-              <FileName>hc05.h</FileName>
+              <FileName>usart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Hardware\hc05.h</FilePath>
+              <FilePath>..\Hardware\usart.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,9 +1,6 @@
-#ifndef _position_h_
-#define _position_h_
+#ifndef _app_utils_h
+#define _app_utils_h
 
-void Task_select(void);
-void SoundLight(void);
-void UpdateSoundLight(void);
-void params_clear(void);
+void TaskSelect(void);
 
 #endif
