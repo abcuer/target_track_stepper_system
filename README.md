@@ -52,5 +52,5 @@ if (abs(StepX.count - StepX.tar) <= 5) { // 进入容差死区范围，视为锁
 }
 ```
 ## 📺 演示与展示
-![系统实物图](.doc\src\1.jpg)
-![](.doc\src\2.png)
+![系统实物图](\.doc\src\1.jpg)
+![系统实物图](\.doc\src\2.png)
