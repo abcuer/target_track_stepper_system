@@ -1,14 +1,14 @@
 #include "pid.h"
 
-void pid_Init(pid_t *pid, uint32_t mode, float p, float i, float d)
+void PID_Update(pid_t *pid, uint32_t mode, float p, float i, float d)
 {
-	pid->pid_mode = mode;
+	pid->mode = mode;
 	pid->p = p;
 	pid->i = i;
 	pid->d = d;
 }
 
-void pid_clear(pid_t *pid)
+void PID_Reset(pid_t *pid)
 {
     pid->error[0] = 0;
     pid->error[1] = 0;
@@ -21,18 +21,18 @@ void pid_clear(pid_t *pid)
     pid->target = 0;
 }
 
-void pid_cal(pid_t *pid)
+void PID_Calculate(pid_t *pid)
 {
 	pid->error[0] = pid->target - pid->now;
 
-	if(pid->pid_mode == DELTA_PID)  
+	if(pid->mode == DELTA_PID)  
 	{
 		pid->pout = pid->p * (pid->error[0] - pid->error[1]);
 		pid->iout = pid->i * pid->error[0];
 		pid->dout = pid->d * (pid->error[0] - 2 * pid->error[1] + pid->error[2]);
 		pid->out += pid->pout + pid->iout + pid->dout;
 	}
-	else if(pid->pid_mode == POSITION_PID)  
+	else if(pid->mode == POSITION_PID)  
 	{
 		pid->pout = pid->p * pid->error[0];
 		pid->iout = pid->i * pid->error[0];
@@ -44,7 +44,7 @@ void pid_cal(pid_t *pid)
 	pid->error[1] = pid->error[0];
 }
 
-void pidout_limit(pid_t *pid, float duty)
+void PID_OutputLimit(pid_t *pid, float duty)
 {
 	if(pid->out >= duty)	pid->out = duty;
 	if(pid->out <= -duty) pid->out = -duty;

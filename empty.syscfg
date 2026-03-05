@@ -65,11 +65,10 @@ GPIO2.associatedPins[1].assignedPin      = "31";
 GPIO2.associatedPins[1].pin.$assign      = "PA31";
 
 GPIO3.port                           = "PORTA";
-GPIO3.$name                          = "BUZZER";
-GPIO3.associatedPins[0].$name        = "Buzzer";
+GPIO3.$name                          = "BEEP";
 GPIO3.associatedPins[0].assignedPin  = "23";
 GPIO3.associatedPins[0].initialValue = "SET";
-GPIO3.associatedPins[0].pin.$assign  = "PA23";
+GPIO3.associatedPins[0].$name        = "ONE";
 
 GPIO4.$name                          = "OLED";
 GPIO4.port                           = "PORTA";
@@ -200,6 +199,7 @@ UART2.rxPinConfig.passedPeripheralType = scripting.forceWrite("Digital");
 Board.peripheral.$suggestSolution            = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution   = "PA20";
 Board.peripheral.swdioPin.$suggestSolution   = "PA19";
+GPIO3.associatedPins[0].pin.$suggestSolution = "PA23";
 GPIO4.associatedPins[0].pin.$suggestSolution = "PA24";
 GPIO6.associatedPins[0].pin.$suggestSolution = "PA13";
 GPIO6.associatedPins[1].pin.$suggestSolution = "PA12";

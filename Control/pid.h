@@ -1,6 +1,6 @@
-#ifndef __PID_h_
-#define __PID_h_
-#include "headfile.h"
+#ifndef __PID_H
+#define __PID_H
+#include "stdint.h"
 
 enum
 {
@@ -17,16 +17,13 @@ typedef struct
 	float pout, dout, iout;
 	float out;   
 	
-	uint32_t pid_mode;
+	uint32_t mode;
 
 }pid_t;
 
-extern pid_t dist;
-extern pid_t encoder_to_ang;
-
-void pid_Init(pid_t *pid, uint32_t mode, float p, float i, float d);
-void pid_clear(pid_t *pid);
-void pid_cal(pid_t *pid);
-void pidout_limit(pid_t *pid, float duty);
+void PID_Update(pid_t *pid, uint32_t mode, float p, float i, float d);
+void PID_Reset(pid_t *pid);
+void PID_Calculate(pid_t *pid);
+void PID_OutputLimit(pid_t *pid, float duty);
 
 #endif

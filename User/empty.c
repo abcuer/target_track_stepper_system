@@ -33,9 +33,7 @@
 
 int main(void)
 {
-	board_init(); // 延迟 串口
-	UsartDeviceInit();
-	TimerDeviceInit();
+	System_Init();	
 
 	while(1) 
 	{   
@@ -49,7 +47,18 @@ void TIMER_2_INST_IRQHandler(void)
 	{
 		if(DL_TIMER_IIDX_ZERO) 
 		{	
-			Key_Tick();
+			Key_Scan();
+			SoundLightUpdate();
+			// 核心逻辑：检测云台是否追踪到位
+            if (g_is_tracking == 1)
+            {
+                // 当 X 轴和 Y 轴的已走步数都达到了目标步数时，视为到达
+                if( (abs(StepX.count - StepX.tar)<=5) && (abs(StepY.count - StepY.tar)<=5))
+                {
+                    g_is_tracking = 0;  // 清除标志位，避免重复触发
+                    SoundLightRun();    // 触发声光报警
+                }
+            }
 		}
 	}
 }

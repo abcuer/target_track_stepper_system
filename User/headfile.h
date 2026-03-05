@@ -1,5 +1,5 @@
-#ifndef _headfile_h
-#define _headfile_h
+#ifndef __HEADFILE_H
+#define __HEADFILE_H
 
 #pragma once
 
@@ -11,20 +11,20 @@
 #include "stdint.h"
 #include "stdlib.h"
 /******************* BSP **********************/
-#include "board.h"
+#include "delay.h"
 #include "timer.h"
+#include "uart.h"
 /***************** Hardware *******************/
-#include "key.h"
 #include "led.h"
-#include "buzzer.h"
+#include "beep.h"
+#include "key.h"
 #include "oled.h"
 #include "motor.h"
-#include "usart.h"
 /***************** Control *******************/
 #include "pid.h"
 /***************** App ***********************/
-#include "app_utils.h"
-#include "app_task.h"
+#include "utils.h"
+#include "soundlight.h"
 #include "test.h"
 
 #endif

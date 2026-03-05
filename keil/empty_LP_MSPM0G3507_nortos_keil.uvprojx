@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>__MSPM0G3507__</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\source\third_party\CMSIS\Core\Include;..\..\source;..\..\Target_Track-Stepper_Motor;..\App;..\Bsp;..\Control;..\User;..\Hardware</IncludePath>
+              <IncludePath>..\..\source\third_party\CMSIS\Core\Include;..\..\source;..\..\target_track_stepper_system;..\App;..\Bsp;..\Control;..\User;..\Modules</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -382,17 +382,52 @@
       </TargetOption>
       <Groups>
         <Group>
+          <GroupName>App</GroupName>
+          <Files>
+            <File>
+              <FileName>utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\utils.c</FilePath>
+            </File>
+            <File>
+              <FileName>utils.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\utils.h</FilePath>
+            </File>
+            <File>
+              <FileName>soundlight.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\soundlight.c</FilePath>
+            </File>
+            <File>
+              <FileName>soundlight.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\soundlight.h</FilePath>
+            </File>
+            <File>
+              <FileName>test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\test.c</FilePath>
+            </File>
+            <File>
+              <FileName>test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\test.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Bsp</GroupName>
           <Files>
             <File>
-              <FileName>board.c</FileName>
+              <FileName>delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Bsp\board.c</FilePath>
+              <FilePath>..\Bsp\delay.c</FilePath>
             </File>
             <File>
-              <FileName>board.h</FileName>
+              <FileName>delay.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Bsp\board.h</FilePath>
+              <FilePath>..\Bsp\delay.h</FilePath>
             </File>
             <File>
               <FileName>timer.c</FileName>
@@ -405,84 +440,14 @@
               <FilePath>..\Bsp\timer.h</FilePath>
             </File>
             <File>
-              <FileName>PWM.c</FileName>
+              <FileName>uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Bsp\PWM.c</FilePath>
+              <FilePath>..\Bsp\uart.c</FilePath>
             </File>
             <File>
-              <FileName>PWM.h</FileName>
+              <FileName>uart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\Bsp\PWM.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware</GroupName>
-          <Files>
-            <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>led.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\led.h</FilePath>
-            </File>
-            <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\key.c</FilePath>
-            </File>
-            <File>
-              <FileName>key.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\key.h</FilePath>
-            </File>
-            <File>
-              <FileName>buzzer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\buzzer.c</FilePath>
-            </File>
-            <File>
-              <FileName>buzzer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\buzzer.h</FilePath>
-            </File>
-            <File>
-              <FileName>oled.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\oled.c</FilePath>
-            </File>
-            <File>
-              <FileName>oled.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\oled.h</FilePath>
-            </File>
-            <File>
-              <FileName>oledfont.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\oledfont.h</FilePath>
-            </File>
-            <File>
-              <FileName>motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>motor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\motor.h</FilePath>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Hardware\usart.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Hardware\usart.h</FilePath>
+              <FilePath>..\Bsp\uart.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -502,37 +467,62 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>App</GroupName>
+          <GroupName>Modules</GroupName>
           <Files>
             <File>
-              <FileName>app_task.c</FileName>
+              <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\App\app_task.c</FilePath>
+              <FilePath>..\Modules\led.c</FilePath>
             </File>
             <File>
-              <FileName>app_task.h</FileName>
+              <FileName>led.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\App\app_task.h</FilePath>
+              <FilePath>..\Modules\led.h</FilePath>
             </File>
             <File>
-              <FileName>app_utils.c</FileName>
+              <FileName>beep.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\App\app_utils.c</FilePath>
+              <FilePath>..\Modules\beep.c</FilePath>
             </File>
             <File>
-              <FileName>app_utils.h</FileName>
+              <FileName>beep.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\App\app_utils.h</FilePath>
+              <FilePath>..\Modules\beep.h</FilePath>
             </File>
             <File>
-              <FileName>test.c</FileName>
+              <FileName>key.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\App\test.c</FilePath>
+              <FilePath>..\Modules\key.c</FilePath>
             </File>
             <File>
-              <FileName>test.h</FileName>
+              <FileName>key.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\App\test.h</FilePath>
+              <FilePath>..\Modules\key.h</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Modules\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Modules\oled.h</FilePath>
+            </File>
+            <File>
+              <FileName>oledfont.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Modules\oledfont.h</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Modules\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Modules\motor.h</FilePath>
             </File>
           </Files>
         </Group>

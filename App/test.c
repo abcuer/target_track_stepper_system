@@ -1,23 +1,23 @@
 #include "headfile.h"
 
 /************************ 开环电机步数测试 ***************************/
-void test(void)
-{
-// 左右方向转动 +90°
-	StepXSetAngle(360.0f);
-	while (DL_TimerA_isRunning(TIMER_0_INST));
+//void test(void)
+//{
+//// 左右方向转动 +90°
+//	StepXSetAngle(360.0f);
+//	while (DL_TimerA_isRunning(TIMER_0_INST));
 
-	// 上下方向转动 +45°
-	StepYSetAngle(360.0f);
-	while (DL_TimerG_isRunning(TIMER_1_INST));
+//	// 上下方向转动 +45°
+//	StepYSetAngle(360.0f);
+//	while (DL_TimerG_isRunning(TIMER_1_INST));
 
-	// 回到原点
-	StepXSetAngle(0.0f);
-	while (DL_TimerA_isRunning(TIMER_0_INST));
+//	// 回到原点
+//	StepXSetAngle(0.0f);
+//	while (DL_TimerA_isRunning(TIMER_0_INST));
 
-	StepYSetAngle(0.0f);
-	while (DL_TimerG_isRunning(TIMER_1_INST));
-}
+//	StepYSetAngle(0.0f);
+//	while (DL_TimerG_isRunning(TIMER_1_INST));
+//}
 
 /************************ 开环电机步数测试 ***************************/
 //void test(void)

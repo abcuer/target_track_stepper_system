@@ -1,5 +1,7 @@
-#ifndef _hc05_h
-#define _hc05_h
+#ifndef __UART_H
+#define __UART_H
+
+#include "stdint.h"
 
 #define HEADER1 0xAA
 #define HEADER2 0x55
@@ -19,6 +21,8 @@ typedef enum {
     WAIT_TAIL2
 } RxState_t;
 
-void UsartDeviceInit(void);
+void UartDeviceInit(void);
+
+extern volatile uint8_t g_is_tracking;
 
 #endif
