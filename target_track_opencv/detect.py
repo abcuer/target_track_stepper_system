@@ -3,9 +3,9 @@ import numpy as np
 
 def detect_red_center(frame):
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    lower_red = np.array([158, 147, 161])
-    upper_red = np.array([179, 255, 255])
-    mask = cv2.inRange(hsv, lower_red, upper_red)
+    lower_fire = np.array([158, 147, 161])
+    upper_fire = np.array([179, 255, 255])
+    mask = cv2.inRange(hsv, lower_fire, upper_fire)
 
     contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if contours:

@@ -5,13 +5,9 @@ def send_angle_cmd(angle_x, angle_y):
     if not ser.is_open:
         ser.open()
 
-    # 限幅 [-180, 180]
-    angle_x = max(-180, min(180, int(angle_x)))
-    angle_y = max(-180, min(180, int(angle_y)))
-
     # 将 [-180, 180] 映射到 [0, 255]
-    angle_x_byte = int((angle_x + 180) / 360 * 255)
-    angle_y_byte = int((angle_y + 180) / 360 * 255)
+    angle_x_byte = max(0, min(255, int((angle_x + 180) / 360 * 255)))
+    angle_y_byte = max(0, min(255, int((angle_y + 180) / 360 * 255)))
 
     cmd = 0x01
     data = bytearray([angle_x_byte, angle_y_byte])
